@@ -23,7 +23,10 @@ declare type Domain = {
 };
 
 declare interface ApiMethod {
-  (...args: any[]): Promise<void> | void;
+  (payload: Message['payload'], socket: Socket):
+    | Promise<void | Message>
+    | void
+    | Message;
 }
 
 declare type Message = {
@@ -34,4 +37,5 @@ declare type Message = {
 declare type Socket = {
   address(): Record<string, any>;
   send(message: Message): void;
+  onClose(cb: () => void): void;
 };

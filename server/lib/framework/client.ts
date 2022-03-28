@@ -9,4 +9,8 @@ export class Client implements Socket {
   send(message: Message) {
     this.socket.send(JSON.stringify(message));
   }
+
+  onClose(cb: () => void) {
+    this.socket.on('close', cb);
+  }
 }

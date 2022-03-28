@@ -1,7 +1,11 @@
 export const array = {
-  range: <U = number>(
+  range: <U>(
     size: number,
-    mapfn: (v: unknown, k: number) => U = (_, i) => i
+    // @ts-ignore
+    mapfn?: (_: undefined, i: number) => U = (
+      _: undefined,
+      i: number
+    ) => i
   ) => Array.from({ length: size }, mapfn),
 
   make: <U>(mapfn: (v: any, k: number) => U, length: number) =>

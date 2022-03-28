@@ -38,7 +38,11 @@ export class Application implements ApplicationI {
       return;
     }
 
-    await api(payload, socket);
+    const response = await api(payload, socket);
+
+    if (response) {
+      socket.send(response);
+    }
   }
 
   async addDomain(domain: Domain) {

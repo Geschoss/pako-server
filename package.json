@@ -2,10 +2,11 @@
   "name": "pako-server",
   "version": "0.0.1",
   "description": "всякие штуки, которые нужны мне для приятной жизни",
-  "main": "src/index.ts",
+  "main": "server/index.ts",
   "scripts": {
     "build": "npm i",
-    "start": "ts-node src/index.ts",
+    "start": "ts-node server/index.ts",
+    "start:cli": "ts-node clients/cli/index.ts",
     "lint-ts": "tsc --noEmit",
     "lint": "npm run lint-ts",
     "format": "prettier --write ."
