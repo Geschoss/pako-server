@@ -5,7 +5,9 @@ const states = {
   MainMenu,
 };
 
-export class Game extends FSM<keyof typeof states> {}
+export class Game extends FSM<keyof typeof states> {
+
+}
 
 export const createGame = () => {
   const initState = new MainMenu();

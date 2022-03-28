@@ -14,7 +14,7 @@ export const createServer = (
   );
 
   ws.on('connection', (socket) => {
-    const client = new Client(socket);
+    const client = new Client(socket, app);
     app.connections.add(socket);
     app.logger.log(`new connection`, client.address());
 
@@ -24,8 +24,9 @@ export const createServer = (
     });
 
     socket.on('message', (data) => {
-      const payload = bufferToJson(data);
-      app.omMessage(payload, client);
+      const message = bufferToJson(data);
+      app.logger.log({ type: 'request', message });
+      app.omMessage(message, client);
     });
   });
 

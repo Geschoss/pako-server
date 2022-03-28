@@ -31,7 +31,7 @@ declare interface ApiMethod {
 
 declare type Message = {
   method: string;
-  payload: Record<string, any>;
+  payload?: Record<string, any>;
 };
 
 declare type Socket = {

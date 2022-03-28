@@ -29,7 +29,6 @@ export class Application implements ApplicationI {
   }
 
   async omMessage(message: Message, socket: Socket) {
-    this.logger.log({ message });
     const { method, payload } = message;
     const api = this.routing.find(method);
 

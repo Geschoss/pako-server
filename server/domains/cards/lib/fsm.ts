@@ -1,17 +1,16 @@
-export interface BaseState {
-  enter(): void;
-  execute(): void;
-  exit(): void;
-}
+import { BaseState } from '../typings';
 
 export class FSM<K extends string> {
+  currentState: BaseState;
   constructor(
     private states: Record<K, { new (): BaseState }>,
-    private currentState: BaseState
-  ) {}
+    currentState: BaseState
+  ) {
+    this.currentState = currentState;
+  }
 
-  update() {
-    this.currentState.execute();
+  update(input: string) {
+    this.currentState.execute(input);
   }
 
   changeState(newStateName: K) {
