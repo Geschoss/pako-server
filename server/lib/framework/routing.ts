@@ -6,6 +6,7 @@ export class Routing {
     this.app = app;
     this.routes = new Map<string, ApiMethod>();
   }
+  
   find(methodName: string) {
     return this.routes.get(methodName);
   }

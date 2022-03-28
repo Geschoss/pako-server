@@ -1,6 +1,6 @@
-import { BaseState } from '../typings';
+import { BaseState, FinitStateMachine, Page } from '../typings';
 
-export class FSM<K extends string> {
+export class FSM<K extends string> implements FinitStateMachine {
   currentState: BaseState;
   constructor(
     private states: Record<K, { new (): BaseState }>,
@@ -9,14 +9,15 @@ export class FSM<K extends string> {
     this.currentState = currentState;
   }
 
-  update(input: string) {
-    this.currentState.execute(input);
+  update(input: string): Page {
+    return this.currentState.execute(this, input);
   }
 
   changeState(newStateName: K) {
     const state = new this.states[newStateName]();
-    this.currentState.exit();
+    this.currentState.exit(this);
     this.currentState = state;
-    this.currentState.enter();
+    this.currentState.enter(this);
+    return this.update('');
   }
 }

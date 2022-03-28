@@ -1,11 +1,11 @@
-import { BaseState } from '../typings';
+import { BaseState, FinitStateMachine, Page } from '../typings';
 
 export class Base implements BaseState {
-  enter() {}
-  execute() {
+  enter(fst: FinitStateMachine): void {}
+  execute(fst: FinitStateMachine, input: string): Page {
     return {
-      header: 'Base',
+      header: 'Not found',
     };
   }
-  exit() {}
+  exit(fst: FinitStateMachine): void {}
 }

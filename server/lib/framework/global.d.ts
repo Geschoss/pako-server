@@ -7,7 +7,7 @@ declare interface ApplicationI {
   context: Context;
   start(): Promise<void>;
   addDomain(domain: Domain): Promise<void>;
-  omMessage(payload: Message, socket: ANY_TYPE): void;
+  onMessage(payload: Message, socket: ANY_TYPE): void;
 }
 
 declare type Context = {

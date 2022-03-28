@@ -1,10 +1,15 @@
+export interface FinitStateMachine {
+  update(input: string): Page;
+  changeState(newStateName: string): Page;
+}
+
 export type BaseState = {
-  enter(): void;
-  execute(input: string): Screen;
-  exit(): void;
+  enter(fst: FinitStateMachine): void;
+  execute(fst: FinitStateMachine, input: string): Page;
+  exit(fst: FinitStateMachine): void;
 };
 
-export type Screen = {
+export type Page = {
   header: string;
   menu?: Menu[];
   input?: Input;

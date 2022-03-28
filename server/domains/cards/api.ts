@@ -12,7 +12,7 @@ const domain: Domain = {
       'start-game': (_, socket) => {
         const gameId = random.int(0, 100000);
         const game = createGame();
-        const screen = game.update('');
+        const page = game.update('');
 
         rooms.set(gameId, { game, creationDate: new Date(), socket });
 
@@ -22,7 +22,7 @@ const domain: Domain = {
 
         return {
           method: 'game-started',
-          payload: { gameId, screen },
+          payload: { gameId, page },
         };
       },
       'end-game': ({ gameId }: UserMessage) => {
@@ -35,11 +35,11 @@ const domain: Domain = {
       },
       'message-game': ({ gameId, input }: UserMessage) => {
         const { game } = rooms.get(gameId);
-        const screen = game.update(input);
+        const page = game.update(input);
 
         return {
           method: 'message-game',
-          payload: { gameId, screen },
+          payload: { gameId, page },
         };
       },
     };

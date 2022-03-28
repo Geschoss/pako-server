@@ -26,7 +26,7 @@ export const createServer = (
     socket.on('message', (data) => {
       const message = bufferToJson(data);
       app.logger.log({ type: 'request', message });
-      app.omMessage(message, client);
+      app.onMessage(message, client);
     });
   });
 

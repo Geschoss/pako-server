@@ -1,4 +1,4 @@
-import { Screen } from '../../server/domains/cards/typings';
+import { Page } from '../../server/domains/cards/typings';
 // @ts-ignore
 import * as readline from 'node:readline/promises';
 import { stdin as input, stdout as output } from 'node:process';
@@ -20,7 +20,7 @@ export const reacli = {
   newLine() {
     process.stdout.write('\n');
   },
-  renderMenu: (menu: Screen['menu']) => {
+  renderMenu: (menu: Page['menu']) => {
     if (!menu || !menu.length) return;
     reacli.newLine();
     menu.forEach(({ key, name }) => {
@@ -28,7 +28,7 @@ export const reacli = {
     });
     reacli.newLine();
   },
-  renderInput: async (screen: Screen['input']) => {
+  renderInput: async (screen: Page['input']) => {
     if (!screen) return '';
     const { label = '' } = screen;
     return await rl.question(`${green(label)}>`);

@@ -1,7 +1,7 @@
 import { createServer } from './server';
 import { Routing } from './routing';
 
-type Conf = {
+type AppOptions = {
   port: number;
   logger?: Console;
 };
@@ -14,7 +14,7 @@ export class Application implements ApplicationI {
 
   context: Context;
 
-  constructor({ port, logger }: Conf) {
+  constructor({ port, logger }: AppOptions) {
     this.port = port;
     this.logger = logger;
     this.routing = new Routing(this);
@@ -28,7 +28,7 @@ export class Application implements ApplicationI {
     createServer(this, { port: this.port });
   }
 
-  async omMessage(message: Message, socket: Socket) {
+  async onMessage(message: Message, socket: Socket) {
     const { method, payload } = message;
     const api = this.routing.find(method);
 
@@ -49,6 +49,6 @@ export class Application implements ApplicationI {
   }
 }
 
-export const createApp = (conf: Conf) => {
+export const createApp = (conf: AppOptions) => {
   return new Application(conf);
 };
