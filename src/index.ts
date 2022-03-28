@@ -3,10 +3,10 @@ import { logger } from './lib/framework/logger';
 
 import Cards from './domains/cards/api';
 
-const PORT = 8000;
+const port = parseInt(process.env.PORT || '8000', 10);
 
 const main = async () => {
-  const app = createApp({ port: PORT, logger });
+  const app = createApp({ port, logger });
 
   await app.addDomain(Cards);
   await app.start();

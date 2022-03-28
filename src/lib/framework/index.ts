@@ -1,6 +1,6 @@
-import WebSocket from 'ws';
 import { createServer } from './server';
 import { Routing } from './routing';
+import { Socket } from '../../typings';
 
 type Conf = {
   port: number;
@@ -10,7 +10,7 @@ type Conf = {
 export class Application implements ApplicationI {
   port: number;
   logger: Console;
-  connections: Set<WebSocket.WebSocket>;
+  connections: Set<Socket>;
   routing: Routing;
 
   context: Context;
@@ -29,7 +29,7 @@ export class Application implements ApplicationI {
     createServer(this, { port: this.port });
   }
 
-  async omMessage(message: Message, socket: WebSocket.WebSocket) {
+  async omMessage(message: Message, socket: Socket) {
     this.logger.log({ message });
     const { method, payload } = message;
     const api = this.routing.find(method);

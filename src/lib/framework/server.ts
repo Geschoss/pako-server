@@ -1,4 +1,5 @@
 import WebSocket from 'ws';
+import { Socket } from '../../typings';
 
 type ServerOptions = {
   port: number;
@@ -36,7 +37,7 @@ function bufferToJson(buffer: WebSocket.RawData): Message {
   return JSON.parse(buffer.toString());
 }
 
-function address(socket: WebSocket.WebSocket) {
+function address(socket: Socket) {
   // @ts-ignore
   return socket._socket.address();
 }
