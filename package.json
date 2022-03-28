@@ -7,7 +7,8 @@
     "build": "npm i",
     "start": "ts-node src/index.ts",
     "lint-ts": "tsc --noEmit",
-    "lint": "npm run lint-ts"
+    "lint": "npm run lint-ts",
+    "format": "prettier --write ."
   },
   "repository": {
     "type": "git",
