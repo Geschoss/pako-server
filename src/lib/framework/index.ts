@@ -1,6 +1,5 @@
 import { createServer } from './server';
 import { Routing } from './routing';
-import { Socket } from '../../typings';
 
 type Conf = {
   port: number;

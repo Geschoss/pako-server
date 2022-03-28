@@ -1,5 +1,5 @@
 import WebSocket from 'ws';
-import { Socket } from '../../typings';
+import { Client } from './client';
 
 type ServerOptions = {
   port: number;
@@ -10,19 +10,22 @@ export const createServer = (
   { port }: ServerOptions
 ) => {
   const ws = new WebSocket.Server({ port }, () =>
-    app.logger.log(`Server start on: http://localhost:${port}`)
+    app.logger.log(`Server start on: ws://localhost:${port}`)
   );
 
   ws.on('connection', (socket) => {
+    const client = new Client(socket);
     app.connections.add(socket);
-    app.logger.log(`new connection`, address(socket));
+    app.logger.log(`new connection`, client.address());
+
     socket.on('close', () => {
       app.logger.log(`connection close`);
-      app.connections.delete(socket);
+      app.connections.delete(client);
     });
+
     socket.on('message', (data) => {
       const payload = bufferToJson(data);
-      app.omMessage(payload, socket);
+      app.omMessage(payload, client);
     });
   });
 
@@ -35,9 +38,4 @@ export const createServer = (
 
 function bufferToJson(buffer: WebSocket.RawData): Message {
   return JSON.parse(buffer.toString());
-}
-
-function address(socket: Socket) {
-  // @ts-ignore
-  return socket._socket.address();
 }

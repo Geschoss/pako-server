@@ -30,3 +30,8 @@ declare type Message = {
   method: string;
   payload: Record<string, any>;
 };
+
+declare type Socket = {
+  address(): Record<string, any>;
+  send(message: Message): void;
+};
