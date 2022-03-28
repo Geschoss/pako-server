@@ -12,6 +12,9 @@
     "type": "git",
     "url": "git+https://github.com/Geschoss/pako-server.git"
   },
+  "engines": {
+    "node": "17.x"
+  },
   "author": "p.e.kolomnikov",
   "license": "ISC",
   "bugs": {
