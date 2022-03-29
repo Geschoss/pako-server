@@ -1,31 +1,35 @@
-import { createServer } from './server';
+import { createWSServer } from './server';
 import { Routing } from './routing';
 
 type AppOptions = {
   port: number;
   logger?: Console;
+  process: NodeJS.Process;
 };
+
+const createPath = (process: NodeJS.Process) => ({
+  root: process.cwd(),
+});
 
 export class Application implements ApplicationI {
   port: number;
   logger: Console;
-  connections: Set<Socket>;
   routing: Routing;
 
   context: Context;
 
-  constructor({ port, logger }: AppOptions) {
+  constructor({ port, logger, process }: AppOptions) {
     this.port = port;
     this.logger = logger;
     this.routing = new Routing(this);
-    this.connections = new Set();
     this.context = {
       logger,
+      paths: createPath(process),
     };
   }
 
   async start() {
-    createServer(this, { port: this.port });
+    createWSServer(this, { port: this.port });
   }
 
   async onMessage(message: Message, socket: Socket) {
@@ -49,6 +53,4 @@ export class Application implements ApplicationI {
   }
 }
 
-export const createApp = (conf: AppOptions) => {
-  return new Application(conf);
-};
+export const createApp = (conf: AppOptions) => new Application(conf);

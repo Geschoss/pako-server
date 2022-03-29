@@ -3,16 +3,21 @@ type ANY_TYPE = any;
 declare interface ApplicationI {
   port: number;
   logger: Console;
-  connections: Set<ANY_TYPE>;
   context: Context;
   start(): Promise<void>;
   addDomain(domain: Domain): Promise<void>;
-  onMessage(payload: Message, socket: ANY_TYPE): void;
+  onMessage(payload: Message, socket: Socket): void;
 }
 
 declare type Context = {
   logger?: Console;
+  paths: Paths;
 };
+
+type Paths = {
+  readonly root: string;
+};
+
 declare interface BusI {
   on: (eventName: string, method: ApiMethod) => BusI;
 }

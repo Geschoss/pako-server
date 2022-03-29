@@ -18,13 +18,14 @@ export const game = {
         break;
     }
   },
-  render: async (screen: Page) => {
-    const { header, menu, input } = screen;
+  render: async (page: Page) => {
+    const { header, menu, input, body } = page;
     reacli.clear();
     reacli.write(header);
-    reacli.renderMenu(menu);
-    const userInput = await reacli.renderInput(input);
-
+    reacli.menu(menu);
+    reacli.body(body);
+    
+    const userInput = await reacli.input(input);
     game.notify({
       gameId: game.gameId,
       input: userInput,

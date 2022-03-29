@@ -5,22 +5,25 @@ type ServerOptions = {
   port: number;
 };
 
-export const createServer = (
+export const createWSServer = (
   app: ApplicationI,
   { port }: ServerOptions
 ) => {
+  const connections = new Set<Socket>();
   const ws = new WebSocket.Server({ port }, () =>
     app.logger.log(`Server start on: ws://localhost:${port}`)
   );
 
   ws.on('connection', (socket) => {
     const client = new Client(socket, app);
-    app.connections.add(socket);
+    connections.add(client);
     app.logger.log(`new connection`, client.address());
+    app.logger.log(`connections: `, connections.size);
 
     socket.on('close', () => {
+      connections.delete(client);
       app.logger.log(`connection close`);
-      app.connections.delete(client);
+      app.logger.log(`connections: `, connections.size);
     });
 
     socket.on('message', (data) => {

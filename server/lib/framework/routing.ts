@@ -12,6 +12,7 @@ export class Routing {
   }
 
   async add({ name, api }: Domain) {
+    // TODO validate dublicate
     const eventsMap = await api(this.app.context);
 
     Object.entries(eventsMap).forEach(([eventName, method]) => {
