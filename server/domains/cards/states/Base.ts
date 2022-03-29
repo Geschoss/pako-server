@@ -1,6 +1,7 @@
 import { BaseState, FinitStateMachine, Page } from '../typings';
 
 export class Base implements BaseState {
+  name = 'Base';
   enter(fst: FinitStateMachine): void {}
   execute(fst: FinitStateMachine, input: string): Page {
     return {

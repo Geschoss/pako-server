@@ -1,12 +1,14 @@
-import { FinitStateMachine } from '../typings';
-import { Base } from './BaseState';
+import { GameI } from '../typings';
+import { Base } from './Base';
 
 export class MainMenu extends Base {
-  execute(fst: FinitStateMachine, input: string) {
-    console.log({ input });
+  name = 'MainMenu';
+  execute(game: GameI, input: string) {
     switch (input) {
+      case '1':
+        return game.changeState('SelectStrategy');
       case '3':
-        return fst.changeState('ShowDeck');
+        return game.changeState('ShowDeck');
     }
     return this.render();
   }
@@ -20,7 +22,7 @@ export class MainMenu extends Base {
         { key: '3', name: 'Show deck' },
       ],
       input: {
-        label: 'Select menu',
+        label: 'select menu',
       },
     };
   }

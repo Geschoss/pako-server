@@ -1,5 +1,7 @@
 export type GameI = FinitStateMachine & {
   readonly cards: Card[];
+  readonly strategies: Strategy[];
+  strategy: Strategy;
 };
 
 export type DeckI = {
@@ -38,6 +40,16 @@ export type Input = {
   label: string;
 };
 
+export type Strategy = {
+  readonly name: string;
+  readonly description: string;
+
+  start(): void;
+  next(): void;
+  end(): void;
+  hasNext(): void;
+  isValid(): boolean;
+};
 // helpers
 export interface Storage {
   read(): Promise<Card[]>;
@@ -50,6 +62,7 @@ export interface FinitStateMachine {
 }
 
 export interface BaseState {
+  readonly name: string;
   enter(fst: FinitStateMachine): void;
   execute(fst: FinitStateMachine, input: string): Page;
   exit(fst: FinitStateMachine): void;

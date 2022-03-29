@@ -2,6 +2,7 @@ import { random } from '../../lib/helpers';
 import { FileStorage } from './lib/storage';
 import { createDeck } from './deck';
 import { createGame, Game } from './game';
+import { strategies } from './strategies';
 
 type Room = { game: Game; creationDate: Date; socket: Socket };
 type UserMessage = { gameId: number; input: string };
@@ -16,7 +17,7 @@ const domain: Domain = {
     return {
       'start-game': (_, socket) => {
         const gameId = random.int(0, 100000);
-        const game = createGame(deck);
+        const game = createGame(deck, strategies, logger);
         const page = game.update('');
 
         rooms.set(gameId, { game, creationDate: new Date(), socket });

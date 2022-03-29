@@ -4,8 +4,6 @@ import { reacli } from './reacli';
 type CB = (payload: Message['payload']) => void;
 
 export const game = {
-  gameId: -1,
-  notify: (() => {}) as CB,
   update: async ({ method, payload }: Message) => {
     const { page, gameId } = payload;
     switch (method) {
@@ -24,14 +22,14 @@ export const game = {
     reacli.write(header);
     reacli.menu(menu);
     reacli.body(body);
-    
+
     const userInput = await reacli.input(input);
     game.notify({
       gameId: game.gameId,
       input: userInput,
     });
   },
-  input: (cb: CB) => {
-    game.notify = cb;
-  },
+  input: (cb: CB) => (game.notify = cb),
+  gameId: -1,
+  notify: (() => {}) as CB,
 };

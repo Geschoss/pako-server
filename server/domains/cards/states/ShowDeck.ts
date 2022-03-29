@@ -1,13 +1,13 @@
 import { GameI, Page } from '../typings';
-import { Base } from './BaseState';
+import { Base } from './Base';
 
 export class ShowDeck extends Base {
+  name = 'ShowDeck';
   execute(game: GameI, input: string) {
-    switch (input) {
-      case '':
-        game.changeState('MainMenu');
-        break;
+    if (input === '') {
+      return game.changeState('MainMenu');
     }
+
     return this.render(game);
   }
 
