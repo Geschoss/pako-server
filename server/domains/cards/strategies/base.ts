@@ -14,6 +14,7 @@ export abstract class Base implements Strategy {
   abstract next(): Card;
   abstract end(): void;
   abstract progress(): Progress;
+  abstract help(lvl: number): Record<string, any>;
 
   isValid(input: string) {
     return this.card.translations.includes(input);

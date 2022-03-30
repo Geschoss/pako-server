@@ -57,5 +57,6 @@ function makeBody(game: GameI, state: Playing): BodyItem[] {
     { type: 'progress', value: game.strategy.progress() },
     { type: 'object', value: { guesses: state.guesses } },
     { type: 'question', value: game.strategy.question() },
+    { type: 'object', value: game.strategy.help(state.helpingLvl) },
   ];
 }

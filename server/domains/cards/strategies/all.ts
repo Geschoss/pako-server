@@ -5,7 +5,7 @@ import { Base } from './base';
 export class All extends Base {
   name = 'all';
   description = 'training all shuffled cards';
-  
+
   card: Card;
   game: GameI;
   cards: Card[] = [];
@@ -38,5 +38,15 @@ export class All extends Base {
       to: this.cards.length,
       label: 'cards',
     };
+  }
+
+  help(lvl: number) {
+    if (lvl > 0) {
+      return {
+        description: this.card.description,
+      };
+    }
+
+    return {};
   }
 }

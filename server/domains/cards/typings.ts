@@ -76,6 +76,7 @@ export interface Strategy {
   question(): Question;
   progress(): Progress;
   answer(): Card;
+  help(lvl: number): Record<string, any>;
 }
 export type Progress = {
   from: number;
