@@ -19,7 +19,7 @@ export class GameOver extends Base {
       header: 'Game over!!',
       menu: [{ key: 'Enter', name: 'Go to Main menu' }],
       input: {
-        label: 'input',
+        label: 'back(y)',
       },
     };
   }

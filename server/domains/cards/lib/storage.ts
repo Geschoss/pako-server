@@ -1,9 +1,6 @@
 import fs from 'fs';
 import { Card, Storage } from '../typings';
 
-const split = (splitter: string) => (str: string) =>
-  str.split(splitter);
-
 const ROW_SPLITTER = '\n';
 const KEYS_SPLITTER = '|';
 const VALUES_SPLITTER = ',';
@@ -47,4 +44,8 @@ export class FileStorage implements Storage {
       KEYS_SPLITTER,
       description
     );
+}
+
+function split(splitter: string) {
+  return (str: string) => str.split(splitter);
 }
