@@ -23,7 +23,7 @@ export class Success extends Base {
       ],
       body: makeBody(game, this),
       input: {
-        label: 'select',
+        label: 'continue(y)',
       },
     };
   }

@@ -41,8 +41,15 @@ export class All extends Base {
   }
 
   help(lvl: number) {
-    if (lvl > 0) {
+    if (lvl === 1) {
       return {
+        pos: this.card.pos,
+      };
+    }
+
+    if (lvl > 1) {
+      return {
+        pos: this.card.pos,
         description: this.card.description,
       };
     }

@@ -15,7 +15,8 @@ const YELLOW_COLOR = '\x1b[33m';
 const RESET_COLOR = '\x1b[0m';
 const BOLT_COLOR = '\x1b[1m';
 const green = (str: string) => `${GREEN_COLOR}${str}${RESET_COLOR}`;
-const bolt = (str: string) => `${BOLT_COLOR}${str}${RESET_COLOR}`;
+const bolt = (str: string | number) =>
+  `${BOLT_COLOR}${str}${RESET_COLOR}`;
 
 export const reacli = {
   write: (str: string) => process.stdout.write(`${green(str)}\n`),
@@ -30,7 +31,7 @@ function menu(m: Page['menu']) {
   if (!m || !m.length) return;
   reacli.newLine();
   m.forEach(({ key, name }) => {
-    reacli.write(`${key}: ${name}`);
+    reacli.write(`${bolt(key)}: ${name}`);
   });
   reacli.newLine();
 }
@@ -50,7 +51,9 @@ const components = {
   list: (list: string[]) => list.forEach(reacli.write),
 
   progress: ({ label, from, to }: Progress) =>
-    reacli.write(`${label} ${from} of ${to}`),
+    reacli.write(
+      `${label} ${bolt(from)} ${green('of')} ${green(bolt(to))}`
+    ),
 
   object: (object: Record<string, any>) => {
     Object.entries(object).forEach(([key, value]) => {
