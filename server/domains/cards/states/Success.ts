@@ -3,7 +3,7 @@ import { BodyItem, Card, GameI, Page } from '../typings';
 import { Base } from './Base';
 
 export class Success extends Base {
-  execute(game: GameI, input: string) {
+  async execute(game: GameI, input: string) {
     switch (input) {
       case KEYS.Back:
         game.changeState('MainMenu');

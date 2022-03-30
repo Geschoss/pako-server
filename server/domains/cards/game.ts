@@ -7,7 +7,7 @@ import {
   Success,
   GameOver,
 } from './states';
-import { BaseState, DeckI, Strategy } from './typings';
+import { BaseState, DeckI, GameI, Strategy } from './typings';
 
 const states = {
   MainMenu,
@@ -25,7 +25,7 @@ type GameOptions = {
   strategies: Strategy[];
   logger: Console;
 };
-export class Game extends FSM {
+export class Game extends FSM implements GameI {
   deck: DeckI;
   strategies: Strategy[];
   strategy: Strategy;
@@ -40,10 +40,6 @@ export class Game extends FSM {
     super(states, currentState, logger);
     this.deck = deck;
     this.strategies = strategies;
-  }
-
-  get cards() {
-    return this.deck.list;
   }
 }
 

@@ -9,16 +9,15 @@ type UserMessage = { gameId: number; input: string };
 
 const domain: Domain = {
   name: 'cards',
-  api: async ({ logger, paths }) => {
+  api: async ({ logger }) => {
     const rooms = new Map<number, Room>();
     const storage = new FileStorage(`${__dirname}/db/dictionary.txt`);
     const deck = await createDeck(storage);
 
     return {
-      'start-game': (_, socket) => {
-        const gameId = random.int(0, 100000);
+      'start-game': async (_, socket) => {
+        const gameId = makeRoomId();
         const game = createGame(deck, strategies, logger);
-        game.update('');
         const page = game.render();
 
         rooms.set(gameId, { game, creationDate: new Date(), socket });
@@ -32,7 +31,7 @@ const domain: Domain = {
           payload: { gameId, page },
         };
       },
-      'end-game': ({ gameId }: UserMessage) => {
+      'end-game': async ({ gameId }: UserMessage) => {
         rooms.delete(gameId);
 
         return {
@@ -40,9 +39,9 @@ const domain: Domain = {
           payload: { gameId },
         };
       },
-      'message-game': ({ gameId, input }: UserMessage) => {
+      'message-game': async ({ gameId, input }: UserMessage) => {
         const { game } = rooms.get(gameId);
-        game.update(input);
+        await game.update(input);
         const page = game.render();
 
         return {
@@ -53,5 +52,10 @@ const domain: Domain = {
     };
   },
 };
+
+function makeRoomId() {
+  // уникальность, ха, не смешите меня
+  return random.int(0, 100000);
+}
 
 export default domain;

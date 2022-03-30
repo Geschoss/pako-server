@@ -4,7 +4,7 @@ import { Base } from './Base';
 
 export class SelectStrategy extends Base {
   name = 'SelectStrategy';
-  execute(game: GameI, input: string) {
+  async execute(game: GameI, input: string) {
     if (input === KEYS.Back) {
       return game.changeState('MainMenu');
     }
@@ -14,7 +14,7 @@ export class SelectStrategy extends Base {
       const strategy = game.strategies[selectedStrategy - 1];
       if (strategy) {
         game.strategy = strategy;
-        game.strategy.start(game);
+        await game.strategy.start(game);
         return game.changeState('Playing');
       }
     } catch (error) {}

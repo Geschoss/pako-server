@@ -3,11 +3,11 @@ import { GameI, Page } from '../typings';
 import { Base } from './Base';
 
 export class GameOver extends Base {
-  enter(game: GameI) {
+  async enter(game: GameI) {
     game.strategy.end();
   }
 
-  execute(game: GameI, input: string) {
+  async execute(game: GameI, input: string) {
     if (input === KEYS.Enter) {
       game.changeState('MainMenu');
       return;

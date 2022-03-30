@@ -3,7 +3,7 @@ import { Base } from './Base';
 
 export class MainMenu extends Base {
   name = 'MainMenu';
-  execute(game: GameI, input: string) {
+  async execute(game: GameI, input: string) {
     switch (input) {
       case '1':
         game.changeState('SelectStrategy');

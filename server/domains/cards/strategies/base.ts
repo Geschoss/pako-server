@@ -10,9 +10,9 @@ export abstract class Base implements Strategy {
 
   abstract hasNext(): boolean;
 
-  abstract start(game: GameI): void;
+  abstract start(game: GameI): Promise<void>;
   abstract next(): Card;
-  abstract end(): void;
+  abstract end(): Promise<void>;
   abstract progress(): Progress;
   abstract help(lvl: number): Record<string, any>;
 

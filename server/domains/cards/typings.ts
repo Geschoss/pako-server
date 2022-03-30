@@ -1,12 +1,13 @@
 export type GameI = FinitStateMachine & {
-  readonly cards: Card[];
   readonly strategies: Strategy[];
+  readonly deck: DeckI;
   strategy: Strategy;
 };
 
 export type DeckI = {
   init(): Promise<void>;
   addCard(card: Card): Promise<void>;
+  getCards(count?: number): Promise<Card[]>;
   readonly list: Card[];
   readonly length: number;
 };
@@ -67,9 +68,9 @@ export interface Strategy {
   readonly cards: Card[];
   readonly game: GameI;
 
-  start(game: GameI): void;
+  start(game: GameI): Promise<void>;
   next(): Card;
-  end(): void;
+  end(): Promise<void>;
   hasNext(): boolean;
   isValid(input: string): boolean;
 
@@ -95,15 +96,15 @@ export interface Storage {
 }
 
 export interface FinitStateMachine {
-  update(input: string): void;
+  update(input: string): Promise<void>;
   changeState(newStateName: string): void;
   render(): Page;
 }
 
 export interface BaseState {
   readonly name: string;
-  enter(fst: FinitStateMachine): void;
-  execute(fst: FinitStateMachine, input: string): void;
-  exit(fst: FinitStateMachine): void;
+  enter(fst: FinitStateMachine): Promise<void>;
+  execute(fst: FinitStateMachine, input: string): Promise<void>;
+  exit(fst: FinitStateMachine): Promise<void>;
   render(fst: FinitStateMachine): Page;
 }

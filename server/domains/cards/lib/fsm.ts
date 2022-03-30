@@ -12,21 +12,21 @@ export class FSM implements FinitStateMachine {
     this.logger = logger;
   }
 
-  update(input: string) {
+  async update(input: string) {
     this.logger.log(
       `State ${this.currentState.name} updated with input ${input}`
     );
-    this.currentState.execute(this, input);
+    await this.currentState.execute(this, input);
   }
 
-  changeState(newStateName: string) {
+  async changeState(newStateName: string) {
     const state = new this.states[newStateName]();
     this.logger.log(
       `State ${this.currentState.name} changed to ${state.name}`
     );
-    this.currentState.exit(this);
+    await this.currentState.exit(this);
     this.currentState = state;
-    this.currentState.enter(this);
+    await this.currentState.enter(this);
   }
 
   render(): Page {

@@ -1,4 +1,3 @@
-import { array } from '../../../lib/helpers';
 import { Card, GameI } from '../typings';
 import { Base } from './base';
 
@@ -16,9 +15,9 @@ export class All extends Base {
     return this.index + 1 < this.cards.length;
   }
 
-  start(game: GameI) {
+  async start(game: GameI) {
     this.game = game;
-    this.cards = array.shuffle(game.cards);
+    this.cards = await game.deck.getCards();
   }
 
   next() {
@@ -28,7 +27,7 @@ export class All extends Base {
     return this.card;
   }
 
-  end() {
+  async end() {
     this.index = -1;
   }
 

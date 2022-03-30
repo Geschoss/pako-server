@@ -31,7 +31,7 @@ function menu(m: Page['menu']) {
   if (!m || !m.length) return;
   reacli.newLine();
   m.forEach(({ key, name }) => {
-    reacli.write(`${bolt(key)}: ${name}`);
+    reacli.write(`${bolt(key)}: ${green(name)}`);
   });
   reacli.newLine();
 }

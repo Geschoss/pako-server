@@ -8,7 +8,7 @@ export class Playing extends Base {
   helpingLvl: number = 0;
   card: Card = null;
 
-  enter(game: GameI) {
+  async enter(game: GameI) {
     if (!game.strategy.hasNext()) {
       return game.changeState('GameOver');
     }
@@ -16,7 +16,7 @@ export class Playing extends Base {
     this.card = game.strategy.next();
   }
 
-  execute(game: GameI, input: string) {
+  async execute(game: GameI, input: string) {
     switch (input) {
       case KEYS.Back:
         return game.changeState('MainMenu');
@@ -31,7 +31,7 @@ export class Playing extends Base {
     this.guesses.push(input);
   }
 
-  exit(): void {
+  async exit() {
     this.guesses = [];
     this.helpingLvl = 0;
     this.card = null;
@@ -42,7 +42,7 @@ export class Playing extends Base {
       header: 'Playing!',
       menu: [
         { key: KEYS.Back, name: 'Back' },
-        { key: KEYS.Primary, name: 'Help' },
+        { key: KEYS.Primary, name: 'Hint' },
       ],
       body: makeBody(game, this),
       input: {
