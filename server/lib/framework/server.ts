@@ -11,13 +11,14 @@ export const createWSServer = (
 ) => {
   const connections = new Set<Socket>();
   const ws = new WebSocket.Server({ port }, () =>
-    app.logger.log(`Server start on: ws://localhost:${port}`)
+    app.logger.log(`Server start on ws://localhost:${port}`)
   );
 
   ws.on('connection', (socket) => {
     const client = new Client(socket, app);
     connections.add(client);
     app.logger.log(`new connection`, client.address());
+    // TODO выпилить
     app.logger.log(`connections: `, connections.size);
 
     socket.on('close', () => {

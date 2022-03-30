@@ -7,10 +7,6 @@ type AppOptions = {
   process: NodeJS.Process;
 };
 
-const createPaths = (process: NodeJS.Process) => ({
-  root: process.cwd(),
-});
-
 export class Application implements ApplicationI {
   port: number;
   logger: Console;
@@ -51,6 +47,12 @@ export class Application implements ApplicationI {
   async addDomain(domain: Domain) {
     await this.routing.add(domain);
   }
+}
+
+function createPaths(process: NodeJS.Process) {
+  return {
+    root: process.cwd(),
+  };
 }
 
 export const createApp = (conf: AppOptions) => new Application(conf);

@@ -30,6 +30,7 @@ export const game = {
       input: userInput,
     });
   },
+  // some tech stuff
   input: (cb: CB) => (game.notify = cb),
   gameId: -1,
   notify: (() => {}) as CB,
