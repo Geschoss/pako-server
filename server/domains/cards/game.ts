@@ -1,25 +1,10 @@
 import { FSM } from './lib/fsm';
-import {
-  MainMenu,
-  ShowDeck,
-  Playing,
-  SelectStrategy,
-  Success,
-  GameOver,
-} from './states';
+import { states } from './states';
 import { BaseState, DeckI, GameI, Strategy } from './typings';
+import { strategies } from './strategies';
 
-const states = {
-  MainMenu,
-  ShowDeck,
-  Playing,
-  SelectStrategy,
-  Success,
-  GameOver,
-};
-type States = keyof typeof states;
 type GameOptions = {
-  states: Record<States, { new (): BaseState }>;
+  states: Record<string, { new (): BaseState }>;
   currentState: BaseState;
   deck: DeckI;
   strategies: Strategy[];
@@ -43,11 +28,7 @@ export class Game extends FSM implements GameI {
   }
 }
 
-export const createGame = (
-  deck: DeckI,
-  strategies: Strategy[],
-  logger: Console
-) => {
-  const currentState = new MainMenu();
+export const createGame = (deck: DeckI, logger: Console) => {
+  const currentState = new states['MainMenu']();
   return new Game({ states, currentState, deck, strategies, logger });
 };

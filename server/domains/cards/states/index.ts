@@ -1,6 +1,15 @@
-export { MainMenu } from './MainMenu';
-export { ShowDeck } from './ShowDeck';
-export { SelectStrategy } from './SelectStrategy';
-export { Playing } from './Playing';
-export { Success } from './Success';
-export { GameOver } from './GameOver';
+import { MainMenu } from './MainMenu';
+import { ShowDeck } from './ShowDeck';
+import { SelectStrategy } from './SelectStrategy';
+import { Playing } from './Playing';
+import { Success } from './Success';
+import { GameOver } from './GameOver';
+
+export const states = {
+  MainMenu,
+  ShowDeck,
+  Playing,
+  SelectStrategy,
+  Success,
+  GameOver,
+};
