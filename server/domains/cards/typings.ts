@@ -8,7 +8,6 @@ export type DeckI = {
   init(): Promise<void>;
   addCard(card: Card): Promise<void>;
   getCards(count?: number): Promise<Card[]>;
-  readonly list: Card[];
   readonly length: number;
 };
 

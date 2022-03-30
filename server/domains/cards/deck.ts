@@ -22,9 +22,6 @@ export class Deck implements DeckI {
     }
     return cards;
   }
-  get list() {
-    return [...this.cards];
-  }
   get length() {
     return this.cards.length;
   }
