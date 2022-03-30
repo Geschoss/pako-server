@@ -7,7 +7,7 @@ type AppOptions = {
   process: NodeJS.Process;
 };
 
-const createPath = (process: NodeJS.Process) => ({
+const createPaths = (process: NodeJS.Process) => ({
   root: process.cwd(),
 });
 
@@ -24,7 +24,7 @@ export class Application implements ApplicationI {
     this.routing = new Routing(this);
     this.context = {
       logger,
-      paths: createPath(process),
+      paths: createPaths(process),
     };
   }
 

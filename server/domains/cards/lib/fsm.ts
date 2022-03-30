@@ -12,11 +12,11 @@ export class FSM implements FinitStateMachine {
     this.logger = logger;
   }
 
-  update(input: string): Page {
+  update(input: string) {
     this.logger.log(
       `State ${this.currentState.name} updated with input ${input}`
     );
-    return this.currentState.execute(this, input);
+    this.currentState.execute(this, input);
   }
 
   changeState(newStateName: string) {
@@ -27,6 +27,9 @@ export class FSM implements FinitStateMachine {
     this.currentState.exit(this);
     this.currentState = state;
     this.currentState.enter(this);
-    return this.update('');
+  }
+
+  render(): Page {
+    return this.currentState.render(this);
   }
 }

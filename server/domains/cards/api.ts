@@ -18,7 +18,8 @@ const domain: Domain = {
       'start-game': (_, socket) => {
         const gameId = random.int(0, 100000);
         const game = createGame(deck, strategies, logger);
-        const page = game.update('');
+        game.update('');
+        const page = game.render();
 
         rooms.set(gameId, { game, creationDate: new Date(), socket });
 
@@ -41,7 +42,8 @@ const domain: Domain = {
       },
       'message-game': ({ gameId, input }: UserMessage) => {
         const { game } = rooms.get(gameId);
-        const page = game.update(input);
+        game.update(input);
+        const page = game.render();
 
         return {
           method: 'message-game',

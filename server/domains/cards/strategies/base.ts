@@ -1,15 +1,32 @@
-import { Strategy } from '../typings';
+import { Card, GameI, Strategy, Progress } from '../typings';
 
-export class BaseStrategy implements Strategy {
-  name = 'base';
-  description = '';
+export abstract class Base implements Strategy {
+  abstract name: string;
+  abstract description: string;
 
-  start() {}
-  next() {}
-  end() {}
+  abstract card: Card;
+  abstract game: GameI;
+  abstract cards: Card[];
 
-  hasNext() {}
-  isValid() {
-    return false;
+  abstract hasNext(): boolean;
+
+  abstract start(game: GameI): void;
+  abstract next(): Card;
+  abstract end(): void;
+  abstract progress(): Progress;
+
+  isValid(input: string) {
+    return this.card.translations.includes(input);
+  }
+
+  question() {
+    return {
+      label: 'Напишите перевод слова',
+      value: this.card.word,
+    };
+  }
+
+  answer() {
+    return this.card;
   }
 }

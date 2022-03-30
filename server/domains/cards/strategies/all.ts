@@ -1,17 +1,42 @@
-import { BaseStrategy } from './base';
-// const array = require('../lib/array.js');
+import { array } from '../../../lib/helpers';
+import { Card, GameI } from '../typings';
+import { Base } from './base';
 
-export class All extends BaseStrategy {
+export class All extends Base {
   name = 'all';
   description = 'training all shuffled cards';
+  
+  card: Card;
+  game: GameI;
+  cards: Card[] = [];
+
+  index = -1;
 
   hasNext() {
-    return false;
+    return this.index + 1 < this.cards.length;
   }
 
-  start() {}
+  start(game: GameI) {
+    this.game = game;
+    this.cards = array.shuffle(game.cards);
+  }
 
-  next() {}
+  next() {
+    this.index = this.index + 1;
+    this.card = this.cards[this.index];
 
-  end() {}
+    return this.card;
+  }
+
+  end() {
+    this.index = -1;
+  }
+
+  progress() {
+    return {
+      from: this.index + 1,
+      to: this.cards.length,
+      label: 'cards',
+    };
+  }
 }

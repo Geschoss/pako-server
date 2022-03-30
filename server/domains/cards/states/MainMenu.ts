@@ -6,11 +6,12 @@ export class MainMenu extends Base {
   execute(game: GameI, input: string) {
     switch (input) {
       case '1':
-        return game.changeState('SelectStrategy');
+        game.changeState('SelectStrategy');
+        return;
       case '3':
-        return game.changeState('ShowDeck');
+        game.changeState('ShowDeck');
+        return;
     }
-    return this.render();
   }
 
   render() {

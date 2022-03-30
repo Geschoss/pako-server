@@ -4,6 +4,8 @@ import {
   ShowDeck,
   Playing,
   SelectStrategy,
+  Success,
+  GameOver,
 } from './states';
 import { BaseState, DeckI, Strategy } from './typings';
 
@@ -12,6 +14,8 @@ const states = {
   ShowDeck,
   Playing,
   SelectStrategy,
+  Success,
+  GameOver,
 };
 type States = keyof typeof states;
 type GameOptions = {

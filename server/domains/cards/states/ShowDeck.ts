@@ -1,20 +1,19 @@
+import { KEYS } from '../constants';
 import { GameI, Page } from '../typings';
 import { Base } from './Base';
 
 export class ShowDeck extends Base {
   name = 'ShowDeck';
   execute(game: GameI, input: string) {
-    if (input === '') {
+    if (input === KEYS.Back) {
       return game.changeState('MainMenu');
     }
-
-    return this.render(game);
   }
 
   render(game: GameI): Page {
     return {
       header: 'Deck',
-      menu: [{ key: 'Enter', name: 'Back' }],
+      menu: [{ key: KEYS.Back, name: 'Back' }],
       body: [
         {
           type: 'list',

@@ -1,10 +1,11 @@
+import { KEYS } from '../constants';
 import { GameI, Page } from '../typings';
 import { Base } from './Base';
 
 export class SelectStrategy extends Base {
   name = 'SelectStrategy';
   execute(game: GameI, input: string) {
-    if (input === '0') {
+    if (input === KEYS.Back) {
       return game.changeState('MainMenu');
     }
 
@@ -13,12 +14,10 @@ export class SelectStrategy extends Base {
       const strategy = game.strategies[selectedStrategy - 1];
       if (strategy) {
         game.strategy = strategy;
-        game.strategy.start();
+        game.strategy.start(game);
         return game.changeState('Playing');
       }
     } catch (error) {}
-
-    return this.render(game);
   }
 
   render(game: GameI): Page {
@@ -34,12 +33,12 @@ export class SelectStrategy extends Base {
 
 function makeMenu(game: GameI) {
   let result = [];
-  game.strategies.forEach((strategy, index) => {
-    result.push({ key: index + 1, name: strategy.description });
+  game.strategies.forEach(({ description, name }, index) => {
+    result.push({ key: index + 1, name: `${name} (${description})` });
   });
 
   result.push({
-    key: '0',
+    key: KEYS.Back,
     name: 'Back',
   });
   return result;

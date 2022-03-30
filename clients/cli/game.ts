@@ -22,6 +22,7 @@ export const game = {
     reacli.write(header);
     reacli.menu(menu);
     reacli.body(body);
+    reacli.newLine();
 
     const userInput = await reacli.input(input);
     game.notify({

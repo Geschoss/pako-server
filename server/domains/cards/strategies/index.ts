@@ -1,9 +1,7 @@
 import { All } from './all';
-// const SomeStrategy = require('./some.js');
-// const TimeStrategy = require('./time.js');
+import { Some } from './some';
 
 const all = new All();
-// const some = new SomeStrategy();
-// const time = new TimeStrategy();
+const some = new Some();
 
-export const strategies = [all];
+export const strategies = [all, some];

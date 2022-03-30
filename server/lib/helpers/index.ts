@@ -10,6 +10,12 @@ export const array = {
 
   make: <U>(mapfn: (v: any, k: number) => U, length: number) =>
     Array.from({ length }, mapfn),
+
+  shuffle: <U>(arr: U[]) => {
+    const result = [...arr];
+    result.sort(() => Math.random() - 0.5);
+    return result;
+  },
 };
 
 export const random = {
