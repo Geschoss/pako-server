@@ -22,6 +22,7 @@ const domain: Domain = {
         rooms.set(gameId, { game, creationDate: new Date(), socket });
 
         socket.onClose(() => {
+          game.end();
           rooms.delete(gameId);
         });
 
@@ -31,6 +32,8 @@ const domain: Domain = {
         };
       },
       'end-game': async ({ gameId }: UserMessage) => {
+        const { game } = rooms.get(gameId);
+        game.end();
         rooms.delete(gameId);
 
         return {

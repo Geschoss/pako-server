@@ -1,6 +1,6 @@
 import { FSM } from './lib/fsm';
 import { states } from './states';
-import { BaseState, DeckI, GameI, Strategy } from './typings';
+import { BaseState, Card, DeckI, GameI, Strategy } from './typings';
 import { strategies } from './strategies';
 
 type GameOptions = {
@@ -14,6 +14,7 @@ export class Game extends FSM implements GameI {
   deck: DeckI;
   strategies: Strategy[];
   strategy: Strategy;
+  draft: Card;
 
   constructor({
     states,
@@ -25,6 +26,28 @@ export class Game extends FSM implements GameI {
     super(states, currentState, logger);
     this.deck = deck;
     this.strategies = strategies;
+    this.draft = {
+      word: '',
+      description: '',
+      pos: '',
+      translations: [],
+    };
+  }
+
+  async saveCard() {
+    await this.deck.addCard(this.draft);
+    this.draft = {
+      word: '',
+      description: '',
+      pos: '',
+      translations: [],
+    };
+  }
+
+  end() {
+    if (this.strategy) {
+      this.strategy.end();
+    }
   }
 }
 

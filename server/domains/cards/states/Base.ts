@@ -1,14 +1,24 @@
-import { BaseState, FinitStateMachine, Page } from '../typings';
+import {
+  BaseState,
+  FinitStateMachine,
+  Page,
+  StateMenu,
+} from '../typings';
 
-export class Base implements BaseState {
-  name = 'Base';
-  async enter(fst: FinitStateMachine) {}
+export abstract class Base implements BaseState {
+  abstract name: string;
+  menu: StateMenu = {};
+
+  abstract render(fst: FinitStateMachine): Page;
+
   async execute(fst: FinitStateMachine, input: string) {}
   async exit(fst: FinitStateMachine) {}
+  async enter(fst: FinitStateMachine) {}
 
-  render(fst: FinitStateMachine) {
-    return {
-      header: 'Not found',
-    };
+  renderMenu() {
+    return Object.entries(this.menu).map(([key, { name }]) => ({
+      key,
+      name,
+    }));
   }
 }

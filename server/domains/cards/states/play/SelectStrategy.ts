@@ -1,6 +1,6 @@
-import { KEYS } from '../constants';
-import { GameI, Page } from '../typings';
-import { Base } from './Base';
+import { KEYS } from '../../constants';
+import { GameI, Page } from '../../typings';
+import { Base } from '../Base';
 
 export class SelectStrategy extends Base {
   name = 'SelectStrategy';

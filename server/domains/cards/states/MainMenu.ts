@@ -1,27 +1,20 @@
-import { GameI } from '../typings';
+import { GameI, StateMenu } from '../typings';
 import { Base } from './Base';
 
 export class MainMenu extends Base {
   name = 'MainMenu';
-  async execute(game: GameI, input: string) {
-    switch (input) {
-      case '1':
-        game.changeState('SelectStrategy');
-        return;
-      case '3':
-        game.changeState('ShowDeck');
-        return;
-    }
-  }
+  menu: StateMenu = {
+    1: { state: 'SelectStrategy', name: 'Play' },
+    2: { state: 'FillWord', name: 'Add new card' },
+    3: { state: 'ShowDeck', name: 'Show deck' },
+  };
+
+  async execute(game: GameI, input: string) {}
 
   render() {
     return {
       header: 'Main menu',
-      menu: [
-        { key: '1', name: 'Play' },
-        { key: '2', name: 'Add new card' },
-        { key: '3', name: 'Show deck' },
-      ],
+      menu: this.renderMenu(),
       input: {
         label: 'select menu',
       },

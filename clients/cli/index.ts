@@ -3,7 +3,7 @@ import { game } from './game';
 
 const url = 'ws://warm-ridge-86601.herokuapp.com/';
 const urlDev = 'ws://localhost:8000';
-const socket = new WebSocket(url);
+const socket = new WebSocket(urlDev);
 
 console.log('Loading...');
 game.input((payload) =>

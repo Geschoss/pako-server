@@ -1,7 +1,24 @@
+export type State =
+  | 'MainMenu'
+  | 'ShowDeck'
+  | 'Playing'
+  | 'SelectStrategy'
+  | 'Success'
+  | 'GameOver'
+  | 'FillWord'
+  | 'FillTranscription'
+  | 'FillDescription'
+  | 'FillPos'
+  | 'SaveCard'
+  | 'AddCard';
+
 export type GameI = FinitStateMachine & {
   readonly strategies: Strategy[];
   readonly deck: DeckI;
   strategy: Strategy;
+  draft: Card;
+  end(): void;
+  saveCard(): Promise<void>;
 };
 
 export type DeckI = {
@@ -96,14 +113,24 @@ export interface Storage {
 
 export interface FinitStateMachine {
   update(input: string): Promise<void>;
-  changeState(newStateName: string): void;
+  changeState(newStateName: State): void;
   render(): Page;
 }
 
+export type StateMenu = Record<
+  string,
+  {
+    name: string;
+    state: State;
+  }
+>;
 export interface BaseState {
   readonly name: string;
+  readonly menu?: StateMenu;
+
   enter(fst: FinitStateMachine): Promise<void>;
   execute(fst: FinitStateMachine, input: string): Promise<void>;
   exit(fst: FinitStateMachine): Promise<void>;
   render(fst: FinitStateMachine): Page;
+  renderMenu(): Menu[];
 }

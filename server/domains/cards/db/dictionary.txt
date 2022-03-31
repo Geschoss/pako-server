@@ -31,3 +31,4 @@ excellence|noun|совершенство,превосходство,мастер
 constrain|verb|ограничивать,сдерживать,затруднить|: to force by imposed stricture, restriction, or limitation
 broader|adjective|более широкий|: having ample extent from side to side or between limits
 apprehend|verb|схватить,понять,понимать,задержать,постичь|:arrest :to grasp woth the understanding: recognize the meaning of
+hunch|noun|догадка,предчувствие,интуиция,подозрение| a strong intuitive feeling concerning especially a future event or result

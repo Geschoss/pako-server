@@ -16,6 +16,12 @@ export class FSM implements FinitStateMachine {
     this.logger.log(
       `State ${this.currentState.name} updated with input ${input}`
     );
+    const menu = this.currentState.menu[input];
+    if (menu) {
+      await this.changeState(menu.state);
+      return;
+    }
+
     await this.currentState.execute(this, input);
   }
 

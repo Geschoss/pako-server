@@ -1,9 +1,19 @@
-import { KEYS } from '../constants';
-import { BodyItem, Card, GameI, Page } from '../typings';
-import { Base } from './Base';
+import { KEYS } from '../../constants';
+import {
+  BodyItem,
+  Card,
+  GameI,
+  Page,
+  StateMenu,
+} from '../../typings';
+import { Base } from '../Base';
 
 export class Playing extends Base {
   name = 'Playing';
+  menu: StateMenu = {
+    [KEYS.Back]: { state: 'MainMenu', name: 'Back' },
+  };
+
   guesses: string[] = [];
   helpingLvl: number = 0;
   card: Card = null;
@@ -17,12 +27,9 @@ export class Playing extends Base {
   }
 
   async execute(game: GameI, input: string) {
-    switch (input) {
-      case KEYS.Back:
-        return game.changeState('MainMenu');
-      case KEYS.Primary:
-        this.helpingLvl = this.helpingLvl + 1;
-        return;
+    if (input === KEYS.Primary) {
+      this.helpingLvl = this.helpingLvl + 1;
+      return;
     }
 
     if (game.strategy.isValid(input)) {
@@ -41,7 +48,7 @@ export class Playing extends Base {
     return {
       header: 'Playing!',
       menu: [
-        { key: KEYS.Back, name: 'Back' },
+        ...this.renderMenu(),
         { key: KEYS.Primary, name: 'Hint' },
       ],
       body: makeBody(game, this),

@@ -12,7 +12,6 @@ export abstract class Base implements Strategy {
 
   abstract start(game: GameI): Promise<void>;
   abstract next(): Card;
-  abstract end(): Promise<void>;
   abstract progress(): Progress;
   abstract help(lvl: number): Record<string, any>;
 
@@ -30,4 +29,5 @@ export abstract class Base implements Strategy {
   answer() {
     return this.card;
   }
+  async end() {}
 }
