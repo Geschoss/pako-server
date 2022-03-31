@@ -19,9 +19,7 @@ class TimeStrategy extends BaseStrategy {
 
   start(game) {
     this.game = game;
-    this.cards = array.shuffle([
-      ...this.game.getCards(),
-    ]);
+    this.cards = array.shuffle([...this.game.getCards()]);
     this.timer = setTimeout(() => {
       this.gameover = true;
     }, PLAY_TIME_SEC * 1000);
