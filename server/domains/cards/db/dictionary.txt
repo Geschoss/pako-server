@@ -1,34 +1,43 @@
-dictionary|noun|словарь,словари|: a reference source in print or electronic form containing words usually alphabetically arranged along with information about their forms, pronunciations, functions, etymologies, meanings, and syntactic and idiomatic uses
-through|preposition|через,посредством,сквозь,благодаря|used as a function word to indicate movement into at one side or point and out at another and especially the opposite side of
-persist|verb|сохраняться,остаются,продолжатся,сохранять|: to continue to exist especially past a usual, expected, or normal time
-overture|noun|инициатива,попытка,аванс,увертюра,увертюр|: an initiative toward agreement or action
-handful|noun|горсть,горстка,небольшое количество|:as much or as many as the hand will grasp
-wisdom|noun|мудрость,знания,ученость|:ability to discern inner qualities and relationships
-origin|noun|происхождение,начало,корни,истоки|:rise, beginning, or derivation from a source
-humble|adjective|скромный,простой,смирение|:not proud
-perception|noun|восприятие,понимание,впечатление,осознание|:a mental image :obsolete
-recently|adverb|недавно,давеча|:during a recent period of time
-however|noun|однако,хотя,впрочем|in whatever manner or way that
-brew|verb|варить,пиво|to prepare (beer, ale, etc.) by steeping, boiling, and etc. :
-witness|noun|свидетель,очевидец,показания|attestation of a fact or event
-vastly|adverb|значительно,гораздо,намного|to a very greate or vast degree or extent
-rapidly|adjective|быстро,стремительно,оперативно,резко|marked by a fast rate of motion, activity, succession, or occurrence
-fate|noun|судьба,участь,рок|destine
-is at hand|verb|начинается|
-seminal|adjective|основополагающий,оригинальный,эпохальный|of, relating to, or consisting of seed or semen
-approach|verb|подход,метод,позиция|to make advances to especially in order to create a desired result
-invariably|adverb|неизбежно,всегда,неизменно|on every occasion :always
-among|preposition|среди|in or through the midst of : surrounded by
-particularly|adverb|особбено,особо,наиболее|to an unusual degree
-sophisticated|adjective|сложный,современный,утонченный|:highly complicated or developed
-extraordinary|adjective|чрезвычайный,необычный,исключительный|going beyond what is usual, regular or customary
-standout|noun|выдающийся,безусловный победитель|one that is prominent or conspicuous especially because of excellence
-despite|preposition|вопреки,несмотря на,хотя|
-competent|adjective|компетентный,грамотный,квалифицированный,комплексный|proper or rightly pertinent
-particularly|adverb|особенно,особо,наиболее,весьма|being a single person or thing
-scalable|adjective|масштабируемый,расширяемый|capable of being scaled
-excellence|noun|совершенство,превосходство,мастерство|the quality of veing excellent
-constrain|verb|ограничивать,сдерживать,затруднить|: to force by imposed stricture, restriction, or limitation
-broader|adjective|более широкий|: having ample extent from side to side or between limits
-apprehend|verb|схватить,понять,понимать,задержать,постичь|:arrest :to grasp woth the understanding: recognize the meaning of
-hunch|noun|догадка,предчувствие,интуиция,подозрение| a strong intuitive feeling concerning especially a future event or result
+among|preposition|среди|in or through the midst of : surrounded by|2022-04-02T07:23:02.661Z
+apprehend|verb|схватить,понять,понимать,задержать,постичь|:arrest :to grasp woth the understanding: recognize the meaning of|2022-04-02T07:23:02.661Z
+approach|verb|подход,метод,позиция|to make advances to especially in order to create a desired result|2022-04-02T07:23:02.661Z
+arbitrary|abjective|произвольный,случайный|existing or coming about seemingly at random or by chance or as a capricious and unreasonable act of will|2022-04-02T07:23:02.661Z
+brew|verb|варить,пиво|to prepare (beer, ale, etc.) by steeping, boiling, and etc. :|2022-04-02T07:23:02.661Z
+broader|adjective|более широкий|: having ample extent from side to side or between limits|2022-04-02T07:23:02.661Z
+competent|adjective|компетентный,грамотный,квалифицированный,комплексный|proper or rightly pertinent|2022-04-02T07:23:02.661Z
+constrain|verb|ограничивать,сдерживать,затруднить|: to force by imposed stricture, restriction, or limitation|2022-04-02T07:23:02.661Z
+despite|preposition|вопреки,несмотря на,хотя||2022-04-02T07:23:02.661Z
+dictionary|noun|словарь,словари|: a reference source in print or electronic form containing words usually alphabetically arranged along with information about their forms, pronunciations, functions, etymologies, meanings, and syntactic and idiomatic uses|2022-04-02T07:23:02.661Z
+distinguish|verb|различать,отличать,выделить|: to perceive a difference in : mentally separate|2022-04-02T07:23:02.661Z
+emphasis|noun|акцент,упор,значение,уделение|force or intensity of expression that gives impressiveness or importance to something|2022-04-02T07:23:02.661Z
+essentially|adverb|по существу,по сути,в основном,главным образом,фактически|used to identify or stress the basic or essential character or nature of a person or thing or to say that a description is basically true or accurate|2022-04-02T07:23:02.661Z
+excellence|noun|совершенство,превосходство,мастерство|the quality of veing excellent|2022-04-02T07:23:02.661Z
+extraordinary|adjective|чрезвычайный,необычный,исключительный|going beyond what is usual, regular or customary|2022-04-02T07:23:02.661Z
+fate|noun|судьба,участь,рок|destine|2022-04-02T07:23:02.661Z
+handful|noun|горсть,горстка,небольшое количество|:as much or as many as the hand will grasp|2022-04-02T07:23:02.661Z
+however|noun|однако,хотя,впрочем|in whatever manner or way that|2022-04-02T07:23:02.661Z
+humble|adjective|скромный,простой,смирение|:not proud|2022-04-02T07:23:02.661Z
+hunch|noun|догадка,предчувствие,интуиция,подозрение| a strong intuitive feeling concerning especially a future event or result|2022-04-02T07:23:02.661Z
+invariably|adverb|неизбежно,всегда,неизменно|on every occasion :always|2022-04-02T07:23:02.661Z
+is at hand|verb|начинается||2022-04-02T07:23:02.661Z
+occupy|verb|занимать,захватить,уделять|to reside in as an owner or tenant|2022-04-02T07:23:02.661Z
+origin|noun|происхождение,начало,корни,истоки|:rise, beginning, or derivation from a source|2022-04-02T07:23:02.661Z
+overture|noun|инициатива,попытка,аванс,увертюра,увертюр|: an initiative toward agreement or action|2022-04-02T07:23:02.661Z
+particularly|adverb|особбено,особо,наиболее|to an unusual degree|2022-04-02T07:23:02.661Z
+particularly|adverb|особенно,особо,наиболее,весьма|being a single person or thing|2022-04-02T07:23:02.661Z
+perception|noun|восприятие,понимание,впечатление,осознание|:a mental image :obsolete|2022-04-02T07:23:02.661Z
+persist|verb|сохраняться,остаются,продолжатся,сохранять|: to continue to exist especially past a usual, expected, or normal time|2022-04-02T07:23:02.661Z
+rapidly|adjective|быстро,стремительно,оперативно,резко|marked by a fast rate of motion, activity, succession, or occurrence|2022-04-02T07:23:02.661Z
+recently|adverb|недавно,давеча|:during a recent period of time|2022-04-02T07:23:02.661Z
+scalable|adjective|масштабируемый,расширяемый|capable of being scaled|2022-04-02T07:23:02.661Z
+seminal|adjective|основополагающий,оригинальный,эпохальный|of, relating to, or consisting of seed or semen|2022-04-02T07:23:02.661Z
+simultaneous|abjective|одновременно,синхронно|existing or occurring at the same time : exactly coincident|2022-04-02T07:23:02.661Z
+sophisticated|adjective|сложный,современный,утонченный|:highly complicated or developed|2022-04-02T07:23:02.661Z
+standout|noun|выдающийся,безусловный победитель|one that is prominent or conspicuous especially because of excellence|2022-04-02T07:23:02.661Z
+through|preposition|через,посредством,сквозь,благодаря|used as a function word to indicate movement into at one side or point and out at another and especially the opposite side of|2022-04-02T07:23:02.661Z
+vastly|adverb|значительно,гораздо,намного|to a very greate or vast degree or extent|2022-04-02T07:30:02.661Z
+wisdom|noun|мудрость,знания,ученость|:ability to discern inner qualities and relationships|2022-04-02T07:30:02.661Z
+witness|noun|свидетель,очевидец,показания|attestation of a fact or event|2022-04-02T07:30:02.661Z
+desirable|abjective|целесообразный,желательный|having pleasing qualities or properties|2022-04-02T07:44:07.348Z
+undoubtedly|abjective|несомненно,безусловно,конечно|not to call into question the truth o|2022-04-02T08:15:50.238Z
+inference|noun|вывод,рассуждение,заключение| a conclusion or opinion that is formed because of known facts or evidence|2022-04-02T09:55:21.603Z

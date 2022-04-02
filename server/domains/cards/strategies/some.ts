@@ -1,3 +1,4 @@
+import { array } from '../../../lib/helpers';
 import { GameI } from '../typings';
 import { All } from './all';
 
@@ -7,7 +8,7 @@ export class Some extends All {
 
   async start(game: GameI) {
     this.game = game;
-    this.game = game;
-    this.cards = await game.deck.getCards(10);
+    const cards = await game.deck.getCards(10);
+    this.cards = array.shuffle(cards);
   }
 }

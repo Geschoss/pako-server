@@ -31,16 +31,20 @@ export class Game extends FSM implements GameI {
       description: '',
       pos: '',
       translations: [],
+      creatingDate: new Date(),
     };
   }
 
   async saveCard() {
+    this.draft.creatingDate = new Date();
     await this.deck.addCard(this.draft);
+
     this.draft = {
       word: '',
       description: '',
       pos: '',
       translations: [],
+      creatingDate: new Date(),
     };
   }
 

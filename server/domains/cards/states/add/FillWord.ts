@@ -16,6 +16,7 @@ export class FillWord extends Base {
 
   async execute(game: GameI, input: string) {
     game.draft.word = input;
+    game.changeState('FillTranscription');
   }
 
   render(game: GameI): Page {

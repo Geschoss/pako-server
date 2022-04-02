@@ -1,5 +1,8 @@
 import { MainMenu } from './MainMenu';
 import { ShowDeck } from './ShowDeck';
+
+import { AddDate } from './AddDate';
+
 import { AddCard } from './add/Add';
 import { FillWord } from './add/FillWord';
 import { FillTranscription } from './add/FillTranscription';
@@ -14,6 +17,7 @@ import { GameOver } from './play/GameOver';
 
 export const states = {
   MainMenu,
+  AddDate,
   ShowDeck,
   Playing,
   SelectStrategy,

@@ -25,7 +25,12 @@ export const reacli = {
   menu,
   input,
   body,
+  loading,
 };
+
+function loading() {
+  reacli.write('Loading...');
+}
 
 function menu(m: Page['menu']) {
   if (!m || !m.length) return;

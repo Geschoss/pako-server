@@ -1,4 +1,3 @@
-import { array } from '../../lib/helpers';
 import { Card, DeckI, Storage } from './typings';
 
 export class Deck implements DeckI {
@@ -16,7 +15,7 @@ export class Deck implements DeckI {
     await this.storage.append(card);
   }
   async getCards(count?: number) {
-    const cards = array.shuffle([...this.cards]);
+    const cards = [...this.cards];
     if (count) {
       return cards.slice(0, count);
     }
@@ -24,6 +23,10 @@ export class Deck implements DeckI {
   }
   get length() {
     return this.cards.length;
+  }
+
+  async save(cards: Card[]) {
+    this.storage.save(cards);
   }
 }
 

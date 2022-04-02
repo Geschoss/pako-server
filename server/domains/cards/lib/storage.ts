@@ -19,7 +19,12 @@ export class FileStorage implements Storage {
   }
   async append(card: Card) {
     const row = this.rowFromCard(card);
-    await fs.promises.appendFile(this.path, `${row}${ROW_SPLITTER}`);
+    await fs.promises.appendFile(this.path, row);
+  }
+
+  async save(cards: Card[]) {
+    const data = cards.map(this.rowFromCard);
+    await fs.promises.writeFile(this.path, data);
   }
 
   cardFromRow = ([
@@ -27,14 +32,22 @@ export class FileStorage implements Storage {
     pos,
     translations,
     description,
+    creatingDate,
   ]: string[]): Card => ({
     word,
     pos,
     translations: translations.split(VALUES_SPLITTER),
     description,
+    creatingDate: new Date(creatingDate),
   });
 
-  rowFromCard = ({ word, translations, pos, description }: Card) =>
+  rowFromCard = ({
+    pos,
+    word,
+    description,
+    translations,
+    creatingDate,
+  }: Card) =>
     ''.concat(
       word,
       KEYS_SPLITTER,
@@ -42,7 +55,10 @@ export class FileStorage implements Storage {
       KEYS_SPLITTER,
       translations.join(VALUES_SPLITTER),
       KEYS_SPLITTER,
-      description
+      description,
+      KEYS_SPLITTER,
+      creatingDate.toISOString(),
+      ROW_SPLITTER
     );
 }
 

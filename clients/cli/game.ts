@@ -25,6 +25,7 @@ export const game = {
     reacli.newLine();
 
     const userInput = await reacli.input(input);
+    reacli.loading();
     game.notify({
       gameId: game.gameId,
       input: userInput,

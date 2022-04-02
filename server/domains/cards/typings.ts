@@ -10,6 +10,7 @@ export type State =
   | 'FillDescription'
   | 'FillPos'
   | 'SaveCard'
+  | 'AddDate'
   | 'AddCard';
 
 export type GameI = FinitStateMachine & {
@@ -26,6 +27,7 @@ export type DeckI = {
   addCard(card: Card): Promise<void>;
   getCards(count?: number): Promise<Card[]>;
   readonly length: number;
+  save(cards: Card[]): Promise<void>;
 };
 
 export type Card = {
@@ -34,6 +36,7 @@ export type Card = {
   word: string;
   translations: string[];
   description: string;
+  creatingDate: Date;
 };
 
 export type Page = {
@@ -109,6 +112,7 @@ export type Question = {
 export interface Storage {
   read(): Promise<Card[]>;
   append(card: Card): Promise<void>;
+  save(cards: Card[]): Promise<void>;
 }
 
 export interface FinitStateMachine {

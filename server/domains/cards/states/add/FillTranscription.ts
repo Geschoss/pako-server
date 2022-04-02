@@ -6,7 +6,7 @@ export class FillTranscription extends Base {
   menu: StateMenu = {
     '0': {
       name: 'Back',
-      state: 'AddCard',
+      state: 'FillWord',
     },
     '1': {
       name: 'Далее',

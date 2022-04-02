@@ -6,7 +6,7 @@ export class FillDescription extends Base {
   menu: StateMenu = {
     '0': {
       name: 'Back',
-      state: 'AddCard',
+      state: 'FillTranscription',
     },
     '1': {
       name: 'Далее',
@@ -15,6 +15,7 @@ export class FillDescription extends Base {
   };
   async execute(game: GameI, input: string) {
     game.draft.description = input;
+    game.changeState('FillPos');
   }
 
   render(game: GameI): Page {

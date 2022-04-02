@@ -33,15 +33,6 @@ export class AddCard extends Base {
 
   async execute(game: GameI, input: string) {}
 
-  async exit(game: GameI): Promise<void> {
-    game.draft = {
-      word: '',
-      description: '',
-      pos: '',
-      translations: [],
-    };
-  }
-
   render(game: GameI) {
     return {
       header: 'Add card',
